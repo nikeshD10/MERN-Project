@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 
 import "./Input.css";
 import { validate } from "../../util/validators";
@@ -30,6 +30,14 @@ export default function Input(props) {
 
   // Returns an array of two elements just like usestate
   const [inputState, dispatch] = useReducer(inputReducer, initialState);
+
+  const { id, onInput } = props;
+  const { value, isValid } = inputState;
+
+  useEffect(() => {
+    onInput(id, value, isValid);
+  }, [id, value, isValid, onInput]);
+
   const changeHandler = (event) => {
     let action = {
       type: "CHANGE",
