@@ -24,8 +24,8 @@ const inputReducer = (state, action) => {
 export default function Input(props) {
   const initialState = {
     //initial state of input
-    value: "",
-    isValid: false,
+    value: props.value || "",
+    isValid: props.valid || false,
     isTouched: false,
   };
 
@@ -85,9 +85,7 @@ export default function Input(props) {
       <label htmlFor={props.id}>{props.label}</label>{" "}
       {/* This will show the label above the input box  */}
       {content} {/* This will show the individual input box*/}
-      {!inputState.isValid && inputState.isTouched && (
-        <p>{props.errorText}</p>
-      )}{" "}
+      {!inputState.isValid && inputState.isTouched && <p>{props.errorText}</p>}
       {/* This will show the error message if the inputstate is not valid is touched  */}
     </div>
   );

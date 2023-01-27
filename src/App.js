@@ -28,7 +28,7 @@ const App = () => {
             <NewPlace />
           </Route>
           {/* Order matters here */}
-          <Route path="/places/:placeId" exact>
+          <Route path="/places/:placeId">
             <UpdatePlace />
           </Route>
           <Redirect to="/" />
