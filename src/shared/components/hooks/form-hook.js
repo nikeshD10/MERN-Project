@@ -6,6 +6,9 @@ const formReducer = (state, action) => {
       let formIsValid = true; // set initially the form is valid when it renders first time.
       for (const inputId in state.inputs) {
         // since we have multiple inputs so we need to validate multiple inputs so we go through objects of inputs using for loop
+        if (!state.inputs[inputId]) {
+          continue;
+        }
         if (inputId === action.inputId) {
           // if the input I am currently looking at is that the input which is getting updated in current action then
           formIsValid = formIsValid && action.isValid; // i will take the information from the dispatched action on wheather input is valid or not
